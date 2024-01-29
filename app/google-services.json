@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "345337124625",
+    "firebase_url": "https://workspheredatabase-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "workspheredatabase",
+    "storage_bucket": "workspheredatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345337124625:android:e39c7ee3086fa339da9eb0",
+        "android_client_info": {
+          "package_name": "com.example.employeeapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo7aXv_F5Zu1YR2lqSTxUe8N4wFG4Ofgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

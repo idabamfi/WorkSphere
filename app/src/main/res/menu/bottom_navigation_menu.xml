@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"
+        android:textColor="@color/nudeDark"/>
+
+    <item
+        android:id="@+id/navigation_clockin"
+        android:title="Clock in"
+        android:icon="@drawable/ic_clock"
+        android:textColor="@color/nudeDark"/>
+
+    <item
+        android:id="@+id/navigation_pay"
+        android:title="Pay"
+        android:icon="@drawable/ic_pay"
+        android:textColor="@color/nudeDark"/>
+
+<!--    <item-->
+<!--        android:id="@+id/navigation_sales"-->
+<!--        android:title="Sales Targets"-->
+<!--        android:icon="@drawable/ic_sales"-->
+<!--        android:textColor="@color/nudeDark"/>-->
+
+<!--    <item-->
+<!--        android:id="@+id/navigation_notifications"-->
+<!--        android:title="Notifications"-->
+<!--        android:icon="@drawable/ic_notifi"-->
+<!--        android:textColor="@color/nudeDark"/>-->
+</menu>

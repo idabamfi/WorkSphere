@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="editTextUsername" type="id" />
+    <item name="editTextPassword" type="id" />
+    <item name="buttonClockin" type="id" />
+    <item name="buttonShifts" type="id" />
+    <item name="buttonTargets" type="id" />
+    <item name="buttonPay" type="id" />
+    <item name="buttonNotification" type="id" />
+    <item name="clockInText" type="id" />
+    <item name="navigation_home" type="id" />
+    <item name="navigation_clockin" type="id" />
+    <item name="navigation_pay" type="id" />
+    <item name="navigation_notfications" type="id" />
+    <item name="navigation_sales" type="id" />
+</resources>

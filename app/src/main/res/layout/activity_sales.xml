@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="251sp"
+        android:layout_height="wrap_content"
+        android:text="@string/worksphere"
+        android:textColor="@color/brownSandy"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/textViewDateGiven"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunday " />
+
+    <EditText
+        android:id="@+id/editTextSalesTarget"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="Enter sales target" />
+
+    <EditText
+        android:id="@+id/editTextSalesAchieved1"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="Enter sales achieved" />
+
+    <TextView
+        android:id="@+id/textViewDateGiven1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday " />
+
+    <EditText
+        android:id="@+id/editTextSalesTarget1"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="Enter sales target" />
+
+    <EditText
+        android:id="@+id/editTextSalesAchieved"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:hint="Enter sales achieved" />
+
+    <TextView
+        android:id="@+id/textViewDateGiven2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tuesday " />
+
+    <EditText
+        android:id="@+id/editTextSalesTarget2"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="Enter sales target" />
+
+    <EditText
+        android:id="@+id/editTextSalesAchieved2"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:hint="Enter sales achieved" />
+
+    <TextView
+        android:id="@+id/textViewDateGiven3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wednesday " />
+
+    <EditText
+        android:id="@+id/editTextSalesTarget3"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="Enter sales target" />
+
+    <EditText
+        android:id="@+id/editTextSalesAchieved3"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:hint="Enter sales achieved" />
+
+    <TextView
+        android:id="@+id/textViewDateGiven4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thursday" />
+
+    <EditText
+        android:id="@+id/editTextSalesTarget4"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="Enter sales target" />
+
+    <EditText
+        android:id="@+id/editTextSalesAchieved4"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:hint="Enter sales achieved" />
+
+    <Button
+        android:id="@+id/buttonSaveData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Targets" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</LinearLayout>

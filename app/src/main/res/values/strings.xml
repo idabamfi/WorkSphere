@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Employee Application</string>
+    <string name="worksphere">WorkSphere</string>
+    <string name="clock_in_status">Clock in Status</string>
+    <string name="schedules_shifts">Schedules Shifts</string>
+    <string name="sales_targets">Sales Targets</string>
+    <string name="pay">Pay</string>
+    <string name="notifications">Notifications</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="home">Home</string>
+</resources>
