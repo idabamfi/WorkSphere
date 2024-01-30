@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AppCompat.Light"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".LaunchActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light">
@@ -37,6 +37,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".AdminActivity"/>
+        <activity android:name=".AdminHomepageActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".NotificationActivity"/>
         <activity android:name=".PayActivity"/>
         <activity android:name=".SalesTargetsActivity"/>
