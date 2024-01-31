@@ -1,55 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    style="@style/parent.contentLayout"
+    tools:context=".AdminHomepageActivity">
 
-    <TextView
-        android:layout_width="251sp"
-        android:layout_height="wrap_content"
-        android:text="@string/worksphere"
-        android:textColor="@color/brownSandy"
-        android:textSize="30sp" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonSetSales"
-        android:layout_width="100sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="120sp"
-        android:layout_marginTop="40sp"
-        android:background="@color/brownTan"
-        android:onClick="view"
-        android:text="SetSales" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="253dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:src="@drawable/ic_admin_img" />
 
-    <Button
-        android:id="@+id/buttonSetShifts"
-        android:layout_width="100sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="120sp"
-        android:layout_marginTop="40sp"
-        android:background="@color/brownTan"
-        android:onClick="view"
-        android:text="SetShifts" />
+            <include layout="@layout/card_admin_sales"/>
+            <include layout="@layout/card_admin_shifts"/>
+            <include layout="@layout/card_admin_clockin"/>
+            <include layout="@layout/card_admin_employee"/>
 
-    <Button
-        android:id="@+id/buttonViewClockIn"
-        android:layout_width="100sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="120sp"
-        android:layout_marginTop="40sp"
-        android:text="View Clock In "
-        android:onClick="view"
-        android:background="@color/brownTan"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    <Button
-        android:id="@+id/buttonAddEmployee"
-        android:layout_width="100sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="120sp"
-        android:layout_marginTop="40sp"
-        android:text="Add Employee"
-        android:onClick="view"
-        android:background="@color/brownTan"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

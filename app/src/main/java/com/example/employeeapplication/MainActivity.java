@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(androidx.appcompat.R.style.Theme_AppCompat_Light);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main1);
 
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);

@@ -2,4 +2,27 @@
 <resources>
 
     <style name="EditScreenTextInputLayoutStyle"></style>
+
+    <style name="viewParent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="parent.contentLayout">
+        <item name="android:background">#FFFFFFFF</item>
+        <item name="android:padding">@dimen/normalPadding</item>
+    </style>
+
+    <style name="viewParent.headerText">
+        <item name="android:textColor">@color/brownTan</item>
+        <item name="android:textSize">@dimen/headerTextSize</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <dimen name="normalPadding">20dp</dimen>
+    <dimen name="headerTextSize">25sp</dimen>
 </resources>
