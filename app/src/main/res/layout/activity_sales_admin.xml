@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SalesAdminActivity">
+
+    <EditText
+        android:id="@+id/editTextDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:drawablePadding="16dp"
+        android:hint="Day (e.g., Monday)"
+        android:maxLines="1"
+        android:textColor="#8B4513"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextDay"
+        android:layout_marginTop="39dp"
+        android:drawablePadding="16dp"
+        android:hint="Date (e.g., 2023-08-12)"
+        android:maxLines="1"
+        android:textColor="#8B4513"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/editTextSalesTarget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextDate"
+        android:layout_marginTop="32dp"
+        android:drawablePadding="16dp"
+        android:hint="Sales Target"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textColor="#8B4513"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/editTextSalesDifference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextSalesTarget"
+        android:layout_marginTop="50dp"
+        android:drawablePadding="16dp"
+        android:hint="Sales Difference"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textColor="#8B4513"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextSalesDifference"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/buttonshapecreambg"
+        android:fontFamily="@font/calibri"
+        android:text="Add Sales Target"
+        android:textAllCaps="false"
+        android:textColor="#D2691E"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gotham"
+        android:text="@string/worksphere"
+        android:textColor="#7B3F00"
+        android:textSize="40sp"
+        tools:ignore="TextSizeCheck" />
+
+</RelativeLayout>

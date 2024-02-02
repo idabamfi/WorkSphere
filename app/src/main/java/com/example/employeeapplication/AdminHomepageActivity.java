@@ -23,13 +23,13 @@ public class AdminHomepageActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view){
         Intent intent;
         if (view.getId() == R.id.buttonSetSales){
-            intent = new Intent(this, ClockinActivity.class);
+            intent = new Intent(this, SalesAdminActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.buttonSetShifts) {
             intent = new Intent(this, ShiftsActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.buttonViewClockIn) {
-            intent = new Intent(this, SalesTargetsActivity.class);
+            intent = new Intent(this, SalesAdminActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.buttonAddEmployee) {
             intent = new Intent(this, PayActivity.class);
