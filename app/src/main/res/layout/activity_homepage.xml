@@ -21,7 +21,7 @@
                 android:layout_height="253dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
-                android:src="@drawable/ic_emp_img" />
+                android:src="@drawable/ic_emps_img" />
 
             <include layout="@layout/card_clockin"/>
             <include layout="@layout/card_shifts"/>
