@@ -14,4 +14,6 @@
     <string name="image_of_employees">image of employees</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="clock_in">Clock In</string>
 </resources>

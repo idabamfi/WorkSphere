@@ -71,7 +71,7 @@
         android:fontFamily="@font/calibri"
         android:gravity="center"
         android:text="@string/for_all_your_employee_needs"
-        android:textColor="#7B3F00"
+        android:textColor="#D2691E"
         android:textSize="20sp"
         tools:ignore="SmallSp" />
 
@@ -139,13 +139,15 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/buttonSignIn"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/buttonshapecreambg"
                 android:fontFamily="@font/calibri"
-                android:text="@string/sign_in"
+                android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColor="#D2691E"
                 android:textSize="16sp"
+                android:onClick="logIn"
                 android:textStyle="bold" />
 
         </LinearLayout>

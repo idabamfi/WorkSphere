@@ -1,35 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".LaunchActivity">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_of_employees"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_worker_img" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gotham"
+                android:text="@string/worksphere"
+                android:textColor="#7B3F00"
+                android:textSize="40sp"
+                tools:ignore="TextSizeCheck" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="2dp"
+                android:background="#deff00" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
-        android:layout_width="251sp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/worksphere"
-        android:textColor="@color/brownSandy"
-        android:textSize="30sp" />
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/calibri"
+        android:gravity="center"
+        android:text="@string/for_all_your_employee_needs"
+        android:textColor="#D2691E"
+        android:textSize="20sp"
+        tools:ignore="SmallSp" />
 
-    <Button
-        android:id="@+id/buttonAdmin"
-        android:layout_width="100sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="120sp"
-        android:layout_marginTop="40sp"
-        android:background="@color/brownTan"
-        android:onClick="view"
-        android:text="Admin" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
-    <Button
-        android:id="@+id/buttonEmployee"
-        android:layout_width="100sp"
-        android:layout_height="50sp"
-        android:layout_marginStart="120sp"
-        android:layout_marginTop="40sp"
-        android:background="@color/brownTan"
-        android:onClick="view"
-        android:text="Employee" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonAdmin"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/buttonshapecreambg"
+            android:fontFamily="@font/calibri"
+            android:text="Admin"
+            android:textAllCaps="false"
+            android:textColor="#D2691E"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:onClick="view"/>
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/buttonEmployee"
+            android:layout_marginTop="70sp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/buttonshapecreambg"
+            android:fontFamily="@font/calibri"
+            android:text="Employee"
+            android:textAllCaps="false"
+            android:textColor="#D2691E"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:onClick="view"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
