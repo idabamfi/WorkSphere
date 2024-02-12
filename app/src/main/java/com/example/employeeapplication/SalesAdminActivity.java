@@ -45,12 +45,15 @@ public class SalesAdminActivity extends AppCompatActivity {
         int salesTarget = Integer.parseInt(editTextSalesTarget.getText().toString().trim());
         int salesDifference = Integer.parseInt(editTextSalesDifference.getText().toString().trim());
 
+        // Create a new instance of the SalesTarget class
         SalesTarget salesTargetObj = new SalesTarget(date, "", salesDifference, salesTarget);
 
         // Push the new sales target to the Firebase Realtime Database
         databaseReference.child(day).setValue(salesTargetObj);
     }
-    public class SalesTarget {
+
+    // Inner class representing a SalesTarget
+    public static class SalesTarget {
         public String dateGiven;
         public String salesAchieved;
         public int salesDifference;
@@ -59,6 +62,7 @@ public class SalesAdminActivity extends AppCompatActivity {
         public SalesTarget() {
             // Default constructor required for calls to DataSnapshot.getValue(SalesTarget.class)
         }
+
         public SalesTarget(String dateGiven, String salesAchieved, int salesDifference, int salesTarget) {
             this.dateGiven = dateGiven;
             this.salesAchieved = salesAchieved;
@@ -67,6 +71,3 @@ public class SalesAdminActivity extends AppCompatActivity {
         }
     }
 }
-
-
-

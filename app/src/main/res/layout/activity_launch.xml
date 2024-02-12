@@ -90,7 +90,6 @@
             android:layout_marginStart="16dp"
             android:background="@drawable/buttonshapecreambg"
             android:fontFamily="@font/calibri"
-            android:text="Admin"
             android:textAllCaps="false"
             android:textColor="#D2691E"
             android:textSize="25sp"

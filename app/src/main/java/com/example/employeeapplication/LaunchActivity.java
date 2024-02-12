@@ -22,10 +22,10 @@ public class LaunchActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view){
         Intent intent;
         if (view.getId() == R.id.buttonAdmin){
-            intent = new Intent(this, ClockinActivity.class);
+            intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.buttonEmployee) {
-            intent = new Intent(this, ShiftsActivity.class);
+            intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
     }
