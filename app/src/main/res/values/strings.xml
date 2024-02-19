@@ -16,4 +16,6 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="clock_in">Clock In</string>
+    <string name="type_your_message">Type your message...</string>
+    <string name="send_message" />
 </resources>

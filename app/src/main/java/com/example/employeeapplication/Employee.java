@@ -9,14 +9,14 @@ public class Employee {
     private int holidayDays;
     private Pay pay;
     private Map<String, Shift> shifts;
-    private List<Notification> notifications;
+    private List<NotificationMessage> notifications;
 
     // Constructor without parameters
     public Employee() {
     }
 
     // Constructor with parameters
-    public Employee(String employeeId, String employeeName, String employeeNumber, int holidayDays, Pay pay, Map<String, Shift> shifts, List<Notification> notifications) {
+    public Employee(String employeeId, String employeeName, String employeeNumber, int holidayDays, Pay pay, Map<String, Shift> shifts, List<NotificationMessage> notifications) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeNumber = employeeNumber;
@@ -75,11 +75,11 @@ public class Employee {
         this.shifts = shifts;
     }
 
-    public List<Notification> getNotifications() {
+    public List<NotificationMessage> getNotifications() {
         return notifications;
     }
 
-    public void setNotifications(List<Notification> notifications) {
+    public void setNotifications(List<NotificationMessage> notifications) {
         this.notifications = notifications;
     }
 

@@ -42,7 +42,6 @@ public class SalesTargetsActivity extends AppCompatActivity {
                             salesTargetInfo.append("Day: ").append(day).append("\n");
                             salesTargetInfo.append("Date: ").append(date).append("\n");
                             salesTargetInfo.append("Sales Target: ").append(salesTarget).append("\n");
-                            salesTargetInfo.append("Sales Difference: ").append(salesDifference).append("\n\n");
                         } else {
                             salesTargetInfo.append("No data available for ").append(day).append("\n\n");
                         }

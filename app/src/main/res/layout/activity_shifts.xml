@@ -1,43 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <TextView
-        android:layout_width="368dp"
+    <!-- Title and Image -->
+    <LinearLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/worksphere"
-        android:textColor="@color/brownSandy"
-        android:textSize="40sp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_shifts_img">
+
+        </ImageView>
+
+
+
+        <TextView
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:text="@string/worksphere"
+            android:textColor="@color/brownSandy"
+            android:textSize="40sp"
+            android:layout_marginStart="8dp"/>
+
+    </LinearLayout>
+
+    <!-- CalendarView -->
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="350sp" />
-
-    <TextView
-        android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:text="Scheduled hours : 16"
-        android:layout_marginTop="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="15sp" />
+        android:layout_below="@id/titleLayout"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
+    <!-- TextView for Shift Information -->
     <TextView
-        android:layout_width="368dp"
+        android:id="@+id/textViewShiftInfo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Holiday hours : 8"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="15sp" />
+        android:layout_below="@id/calendarView"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textColor="@android:color/black"/>
 
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/bottom_navigation"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        app:menu="@menu/bottom_navigation_menu" />-->
-
-</LinearLayout>
+</RelativeLayout>

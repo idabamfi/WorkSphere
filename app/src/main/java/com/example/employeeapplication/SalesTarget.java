@@ -5,6 +5,8 @@ public class SalesTarget {
     private double salesDifference;
     private double salesTarget;
 
+    private double salesAchieved;
+
     // Constructor without parameters
     public SalesTarget() {
     }
@@ -14,6 +16,7 @@ public class SalesTarget {
         this.dateGiven = dateGiven;
         this.salesDifference = salesDifference;
         this.salesTarget = salesTarget;
+        this.salesAchieved = salesAchieved;
     }
 
     // Getters and setters
@@ -40,4 +43,13 @@ public class SalesTarget {
     public void setSalesTarget(double salesTarget) {
         this.salesTarget = salesTarget;
     }
+
+    public double getSalesAchieved(double salesAchieved) {
+        return salesAchieved;
+    }
+
+    public void setSalesAchieved(double salesAchieved) {
+        this.salesAchieved = salesAchieved;
+    }
+
 }

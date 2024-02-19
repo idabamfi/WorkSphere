@@ -1,22 +1,29 @@
 package com.example.employeeapplication;
 
-public class Notification {
+public class NotificationMessage {
+    private String messageId;
     private String timestamp;
     private String message;
     private String senderId;
 
-    // Constructor without parameters
-    public Notification() {
+    public NotificationMessage() {
+        // Default constructor required for Firebase
     }
-
-    // Constructor with parameters
-    public Notification(String timestamp, String message, String senderId) {
+    public NotificationMessage(String messageId, String timestamp, String message, String senderId) {
+        this.messageId = messageId;
         this.timestamp = timestamp;
         this.message = message;
         this.senderId = senderId;
     }
 
-    // Getters and setters
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
+    }
+
     public String getTimestamp() {
         return timestamp;
     }
@@ -41,3 +48,5 @@ public class Notification {
         this.senderId = senderId;
     }
 }
+
+

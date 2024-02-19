@@ -8,6 +8,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AdminActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
@@ -22,6 +27,27 @@ public class AdminActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference managementRef = FirebaseDatabase.getInstance().getReference("management").child(userUid);
+
+        managementRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // management data exists, retrieve it
+                    Management management = dataSnapshot.getValue(Management.class);
+                    // Do something with the management data
+                } else {
+                    // management data not found
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle errors
+            }
+        });
     }
     public void logIn(View view){
         String email = editTextEmail.getText().toString().trim();
