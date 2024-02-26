@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ import java.util.TimeZone;
 public class NotificationActivity extends AppCompatActivity {
     private FirebaseListAdapter<NotificationMessage> adapter;
     private DatabaseReference notificationRef;
+    private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
     @Override
@@ -34,7 +36,8 @@ public class NotificationActivity extends AppCompatActivity {
         setTheme(androidx.appcompat.R.style.Theme_AppCompat_Light);
         setContentView(R.layout.activity_notifications);
 
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
         notificationRef = FirebaseDatabase.getInstance().getReference().child("notifications");
 
         ImageButton sendButton = findViewById(R.id.sendButton);
@@ -50,8 +53,10 @@ public class NotificationActivity extends AppCompatActivity {
         adapter = new FirebaseListAdapter<NotificationMessage>(options) {
             @Override
             protected void populateView(@NonNull View v, @NonNull NotificationMessage model, int position) {
-                // Bind the message to the view
-                // Here you should bind the message data to your chat bubble layout
+                TextView messageTextView = v.findViewById(R.id.messageText);
+                TextView timeTextView = v.findViewById(R.id.timeText); // Add this line
+                messageTextView.setText(model.getMessage());
+                timeTextView.setText(model.getTimestamp()); // Add this line
             }
         };
 
@@ -73,7 +78,8 @@ public class NotificationActivity extends AppCompatActivity {
         DatabaseReference newMessageRef = notificationRef.push();
         String messageId = newMessageRef.getKey();
         if (messageId != null) {
-            NotificationMessage message = new NotificationMessage(messageId, getCurrentTime(), messageText, senderId);
+            String timestamp = getCurrentTime(); // Get current timestamp
+            NotificationMessage message = new NotificationMessage(messageId, timestamp, messageText, senderId);
             newMessageRef.setValue(message);
         }
     }

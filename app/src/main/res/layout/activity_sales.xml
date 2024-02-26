@@ -13,54 +13,164 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:alpha="0.4"
             android:contentDescription="sales"
-            android:src="@drawable/ic_sales"
-            android:alpha="0.4"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_sales" />
 
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gotham"
-            android:text="@string/worksphere"
-            android:textColor="#7B3F00"
-            android:textSize="40sp"
-            tools:ignore="TextSizeCheck" />
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="2dp"
-            android:background="#deff00" />
 
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/textViewSalesTarget"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/brownTan"
-                style="@style/viewParent.headerText"
-                android:minHeight="48dp"/>
         </LinearLayout>
-    </ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
+                <TextView
+                    android:id="@+id/textViewSalesTarget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/brownTan"
+                    style="@style/viewParent.headerText"
+                    android:minHeight="48dp"/>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gotham"
+                    android:text="@string/worksphere"
+                    android:textColor="#7B3F00"
+                    android:textSize="40sp"
+                    tools:ignore="TextSizeCheck" />
+
+                <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:text="Sales Targets"
+                    android:textColor="#7B3F00"
+                    android:textSize="30sp" />
+
+                <!-- Placeholder for Shift 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/shift1DateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shift 1 Date: "
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/shift1SalesText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:layout_marginStart="8dp"/>
+
+                    <EditText
+                        android:id="@+id/shift1Achieved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:hint="Sales Achieved"
+                        android:inputType="numberDecimal"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Placeholder for Shift 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/shift2DateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shift 2 Date: "
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/shift2SalesText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:layout_marginStart="8dp"/>
+
+                    <EditText
+                        android:id="@+id/shift2Achieved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:hint="Sales Achieved"
+                        android:inputType="numberDecimal"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Placeholder for Shift 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/shift3DateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shift 3 Date: "
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/shift3SalesText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:layout_marginStart="8dp"/>
+
+                    <EditText
+                        android:id="@+id/shift3Achieved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:hint="Sales Achieved"
+                        android:inputType="numberDecimal"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <!-- Save Button -->
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"/>
+
+                </LinearLayout>
 </RelativeLayout>
+
 

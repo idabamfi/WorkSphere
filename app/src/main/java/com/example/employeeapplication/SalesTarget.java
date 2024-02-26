@@ -2,7 +2,7 @@ package com.example.employeeapplication;
 
 public class SalesTarget {
     private String dateGiven;
-    private double salesDifference;
+
     private double salesTarget;
 
     private double salesAchieved;
@@ -14,7 +14,6 @@ public class SalesTarget {
     // Constructor with parameters
     public SalesTarget(String dateGiven, double salesDifference, double salesTarget) {
         this.dateGiven = dateGiven;
-        this.salesDifference = salesDifference;
         this.salesTarget = salesTarget;
         this.salesAchieved = salesAchieved;
     }
@@ -28,13 +27,6 @@ public class SalesTarget {
         this.dateGiven = dateGiven;
     }
 
-    public double getSalesDifference() {
-        return salesDifference;
-    }
-
-    public void setSalesDifference(double salesDifference) {
-        this.salesDifference = salesDifference;
-    }
 
     public double getSalesTarget() {
         return salesTarget;

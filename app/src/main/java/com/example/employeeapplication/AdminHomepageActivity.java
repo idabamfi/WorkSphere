@@ -1,10 +1,10 @@
 package com.example.employeeapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
-import android.view.View;
 
 public class AdminHomepageActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,7 +35,7 @@ public class AdminHomepageActivity extends AppCompatActivity implements View.OnC
             startActivity(intent);
         } else if (view.getId() == R.id.buttonAddEmployee) {
             //change activity
-            intent = new Intent(this, PayActivity.class);
+           intent = new Intent(this, PayActivity.class);
             startActivity(intent);
         }
     }

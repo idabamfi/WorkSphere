@@ -1,7 +1,10 @@
 package com.example.employeeapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +25,7 @@ public class ShiftsActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     // Shift data fetched from Firebase
-    private HashMap<String, String> shiftData;
+    private HashMap<String, Shift> shiftData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +37,46 @@ public class ShiftsActivity extends AppCompatActivity {
         textViewShiftInfo = findViewById(R.id.textViewShiftInfo);
 
         // Initialize Firebase Database reference
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("shifts");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("employees");
 
         // Initialize shift data from Firebase
         fetchShiftData();
 
+        // Set listener for calendar item click
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                // Create a key in the format "YYYY-MM-DD"
+                String selectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth);
+                displayShiftInfo(selectedDate);
+
+                // Get the selected day view
+                CalendarView cv = (CalendarView) view;
+                LinearLayout ll = (LinearLayout) cv.getChildAt(0);
+                LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
+                for (int i = 0; i < ll2.getChildCount(); i++) {
+                    View weekView = ll2.getChildAt(i);
+                    if (weekView instanceof LinearLayout) {
+                        LinearLayout llDays = (LinearLayout) weekView;
+                        for (int j = 0; j < llDays.getChildCount(); j++) {
+                            View dayView = llDays.getChildAt(j);
+                            if (dayView instanceof TextView) {
+                                TextView dayTextView = (TextView) dayView;
+                                long dayMillis = cv.getDate();
+                                int day = (int) (dayMillis / (1000 * 60 * 60 * 24)) + 1;
+                                if (day == dayOfMonth) {
+                                    // Change the color of the selected date
+                                    dayTextView.setTextColor(Color.RED);
+                                } else {
+                                    // Reset the color of other dates
+                                    dayTextView.setTextColor(Color.BLACK);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
         // Set listener for calendar item click
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -52,14 +90,16 @@ public class ShiftsActivity extends AppCompatActivity {
 
     // Fetch shift data from Firebase Realtime Database
     private void fetchShiftData() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 shiftData = new HashMap<>();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Shift shift = snapshot.getValue(Shift.class);
-                    String shiftInfo = shift.getStartTime() + " - " + shift.getEndTime(); // Customize this as per your requirement
-                    shiftData.put(shift.getShiftDate(), shiftInfo);
+                for (DataSnapshot employeeSnapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot shiftSnapshot : employeeSnapshot.child("shifts").getChildren()) {
+                        Shift shift = shiftSnapshot.getValue(Shift.class);
+                        String shiftKey = shiftSnapshot.getKey();
+                        shiftData.put(shiftKey, shift);
+                    }
                 }
             }
 
@@ -73,10 +113,15 @@ public class ShiftsActivity extends AppCompatActivity {
     // Display shift information for the selected date
     private void displayShiftInfo(String selectedDate) {
         if (shiftData != null && shiftData.containsKey(selectedDate)) {
-            textViewShiftInfo.setText(shiftData.get(selectedDate));
+            Shift shift = shiftData.get(selectedDate);
+            String shiftInfo = "Start Time: " + shift.getStartTime() + "\n" +
+                    "End Time: " + shift.getEndTime() + "\n" +
+                    "Clock-in Status: " + shift.getClockInStatus();
+            textViewShiftInfo.setText(shiftInfo);
         } else {
             textViewShiftInfo.setText("No shift recorded for this date.");
         }
     }
+
 
 }
