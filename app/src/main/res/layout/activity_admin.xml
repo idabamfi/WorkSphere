@@ -13,9 +13,10 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="717dp"
             android:contentDescription="@string/image_of_employees"
-            android:src="@drawable/ic_worker_img" />
+            android:src="@drawable/ic_emp_div" />
+
 
     </FrameLayout>
 
@@ -47,14 +48,14 @@
                 android:fontFamily="@font/gotham"
                 android:text="@string/worksphere"
                 android:textColor="#7B3F00"
-                android:textSize="40sp"
+                android:textSize="45sp"
                 tools:ignore="TextSizeCheck" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="2dp"
-                android:background="#deff00" />
+                android:background="#D2691E" />
 
         </LinearLayout>
 
@@ -76,7 +77,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="286dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
@@ -84,80 +85,80 @@
         android:paddingLeft="32dp"
         android:paddingRight="32dp">
 
-            <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#96ffffff"
+            android:theme="@style/EditScreenTextInputLayoutStyle">
+
+            <EditText
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="#96ffffff"
-                android:theme="@style/EditScreenTextInputLayoutStyle">
-
-                <EditText
-                    android:id="@+id/editTextEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawablePadding="16dp"
-                    android:drawableEnd="@drawable/ic_email_cream_24dp"
-                    android:fontFamily="@font/calibri"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:textColor="#8B4513"
-                    android:textSize="25sp"
-                    android:autofillHints="Enter Email" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="#96ffffff"
-                android:theme="@style/EditScreenTextInputLayoutStyle">
-
-                <EditText
-                    android:id="@+id/editTextPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawablePadding="16dp"
-                    android:drawableEnd="@drawable/ic_lock_cream_24dp"
-                    android:fontFamily="@font/calibri"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textColor="#8B4513"
-                    android:textSize="25sp"
-                    android:autofillHints="Enter Password" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/buttonshapecreambg"
-                    android:fontFamily="@font/calibri"
-                    android:text="login"
-                    android:textAllCaps="false"
-                    android:textColor="#D2691E"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:onClick="logIn"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="match_parent"
+                android:autofillHints="Enter Email"
+                android:drawableEnd="@drawable/ic_email_cream_24dp"
+                android:drawablePadding="16dp"
                 android:fontFamily="@font/calibri"
-                android:text="@string/forgot_password"
-                android:textAlignment="center"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColor="#8B4513"
+                android:textSize="25sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#96ffffff"
+            android:theme="@style/EditScreenTextInputLayoutStyle">
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="Enter Password"
+                android:drawableEnd="@drawable/ic_lock_cream_24dp"
+                android:drawablePadding="16dp"
+                android:fontFamily="@font/calibri"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="#8B4513"
+                android:textSize="25sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/buttonshapecreambg"
+                android:fontFamily="@font/calibri"
+                android:onClick="logIn"
+                android:text="login"
+                android:textAllCaps="false"
                 android:textColor="#D2691E"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/calibri"
+            android:text="@string/forgot_password"
+            android:textAlignment="center"
+            android:textColor="#D2691E"
+            android:textSize="16sp" />
     </LinearLayout>
 
 

@@ -12,10 +12,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="813dp"
             android:contentDescription="@string/image_of_employees"
-            android:src="@drawable/ic_worker_img" />
+            android:src="@drawable/ic_people" />
 
     </FrameLayout>
 
@@ -45,14 +45,14 @@
                 android:fontFamily="@font/gotham"
                 android:text="@string/worksphere"
                 android:textColor="#7B3F00"
-                android:textSize="40sp"
+                android:textSize="45sp"
                 tools:ignore="TextSizeCheck" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="2dp"
-                android:background="#deff00" />
+                android:background="#D2691E" />
 
         </LinearLayout>
 

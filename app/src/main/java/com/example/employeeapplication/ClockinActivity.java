@@ -8,6 +8,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,9 @@ public class ClockinActivity extends AppCompatActivity {
     private NfcAdapter nfcAdapter;
     private PendingIntent pendingIntent;
     private TextView clockInText;
+
+    Button clockOutButton = findViewById(R.id.clockOutButton);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,13 @@ public class ClockinActivity extends AppCompatActivity {
 
         // Reference to TextView for displaying clock-in message
         clockInText = findViewById(R.id.clockInText);
+
+        clockOutButton.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+                processClockOut();
+            }
+        });
     }
 
     @Override
@@ -177,8 +188,8 @@ public class ClockinActivity extends AppCompatActivity {
         clockInText.setText("You are Clocked in\n" + currentTime);
 
         // Update clock in status and time in Firebase Realtime Database
-        String employeeId = "ochv3pOEJiabJjvYySg059ujoWk1"; // Replace with actual employee ID
-        String shiftId = "shift1"; // Replace with actual shift ID
+        String employeeId = "ochv3pOEJiabJjvYySg059ujoWk1";
+        String shiftId = "shift1";
 
         DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference().child("employees").child(employeeId).child("shifts").child(shiftId);
         employeeRef.child("clockInStatus").setValue("yes");
@@ -194,6 +205,7 @@ public class ClockinActivity extends AppCompatActivity {
         imageView.setImageResource(R.drawable.ic_clockout);
 
         // Display clock out time
+        Toast.makeText(this, "You have clocked out" , Toast.LENGTH_SHORT).show();
         TextView clockInText = findViewById(R.id.clockInText);
         String currentTime = getCurrentTimeAndDate();
         clockInText.setText("You are Clocked out\n" + currentTime);
