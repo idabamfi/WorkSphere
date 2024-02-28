@@ -1,7 +1,6 @@
 package com.example.employeeapplication;
 
 public class SalesTarget {
-    private String dateGiven;
 
     private double salesTarget;
 
@@ -13,20 +12,9 @@ public class SalesTarget {
 
     // Constructor with parameters
     public SalesTarget(String dateGiven, double salesDifference, double salesTarget) {
-        this.dateGiven = dateGiven;
         this.salesTarget = salesTarget;
         this.salesAchieved = salesAchieved;
     }
-
-    // Getters and setters
-    public String getDateGiven() {
-        return dateGiven;
-    }
-
-    public void setDateGiven(String dateGiven) {
-        this.dateGiven = dateGiven;
-    }
-
 
     public double getSalesTarget() {
         return salesTarget;

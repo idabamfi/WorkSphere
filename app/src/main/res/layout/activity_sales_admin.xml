@@ -1,81 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SalesAdminActivity">
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    <EditText
-        android:id="@+id/editTextDay"
+    <TextView
+        android:layout_width="238dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:text="Enter Sales Target"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/clockImageView"
+        android:layout_width="374dp"
+        android:layout_height="213dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="16dp"
+        android:alpha="0.4"
+        android:src="@drawable/ic_worker_img" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Date (YYYY-MM-DD)"
+            android:inputType="date"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:drawablePadding="16dp"
-        android:hint="Day (e.g., Monday)"
-        android:maxLines="1"
-        android:textColor="#8B4513"
-        android:textSize="25sp" />
+        android:layout_marginTop="16dp">
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextDay"
-        android:layout_marginTop="39dp"
-        android:drawablePadding="16dp"
-        android:hint="Date (e.g., 2023-08-12)"
-        android:maxLines="1"
-        android:textColor="#8B4513"
-        android:textSize="25sp" />
-
-    <EditText
-        android:id="@+id/editTextSalesTarget"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextDate"
-        android:layout_marginTop="32dp"
-        android:drawablePadding="16dp"
-        android:hint="Sales Target"
-        android:inputType="number"
-        android:maxLines="1"
-        android:textColor="#8B4513"
-        android:textSize="25sp" />
-
-    <EditText
-        android:id="@+id/editTextSalesDifference"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextSalesTarget"
-        android:layout_marginTop="50dp"
-        android:drawablePadding="16dp"
-        android:hint="Sales Difference"
-        android:inputType="number"
-        android:maxLines="1"
-        android:textColor="#8B4513"
-        android:textSize="25sp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextSalesTarget"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Sales Target"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextSalesDifference"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/buttonshapecreambg"
-        android:fontFamily="@font/calibri"
-        android:text="Add Sales Target"
-        android:textAllCaps="false"
-        android:textColor="#D2691E"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:text="Update Sales Target"
+        android:textColor="#FF000000"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="24dp"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/gotham"
-        android:text="@string/worksphere"
-        android:textColor="#7B3F00"
-        android:textSize="40sp"
-        tools:ignore="TextSizeCheck" />
-
-</RelativeLayout>
+</LinearLayout>

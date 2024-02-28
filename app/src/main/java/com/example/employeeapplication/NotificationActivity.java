@@ -2,17 +2,20 @@ package com.example.employeeapplication;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseListAdapter;
-import com.firebase.ui.database.FirebaseListOptions;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -25,9 +28,8 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class NotificationActivity extends AppCompatActivity {
-    private FirebaseListAdapter<NotificationMessage> adapter;
+    private FirebaseRecyclerAdapter<NotificationMessage, NotificationViewHolder> adapter;
     private DatabaseReference notificationRef;
-    private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
     @Override
@@ -36,43 +38,60 @@ public class NotificationActivity extends AppCompatActivity {
         setTheme(androidx.appcompat.R.style.Theme_AppCompat_Light);
         setContentView(R.layout.activity_notifications);
 
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         notificationRef = FirebaseDatabase.getInstance().getReference().child("notifications");
 
         ImageButton sendButton = findViewById(R.id.sendButton);
         final EditText messageInput = findViewById(R.id.messageInput);
-        ListView messageList = findViewById(R.id.messageList);
+        RecyclerView recyclerView = findViewById(R.id.messageList);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true); // Display the latest message at the bottom
+        recyclerView.setLayoutManager(layoutManager);
 
         Query query = notificationRef.orderByChild("timestamp").limitToLast(50);
-        FirebaseListOptions<NotificationMessage> options = new FirebaseListOptions.Builder<NotificationMessage>()
-                .setQuery(query, NotificationMessage.class)
-                .setLayout(R.layout.message_item)
-                .build();
+        FirebaseRecyclerOptions<NotificationMessage> options =
+                new FirebaseRecyclerOptions.Builder<NotificationMessage>()
+                        .setQuery(query, NotificationMessage.class)
+                        .build();
 
-        adapter = new FirebaseListAdapter<NotificationMessage>(options) {
+        adapter = new FirebaseRecyclerAdapter<NotificationMessage, NotificationViewHolder>(options) {
             @Override
-            protected void populateView(@NonNull View v, @NonNull NotificationMessage model, int position) {
-                TextView messageTextView = v.findViewById(R.id.messageText);
-                TextView timeTextView = v.findViewById(R.id.timeText); // Add this line
-                messageTextView.setText(model.getMessage());
-                timeTextView.setText(model.getTimestamp()); // Add this line
+            protected void onBindViewHolder(@NonNull NotificationViewHolder holder, int position, @NonNull NotificationMessage model) {
+                holder.messageTextView.setText(model.getMessage());
+                holder.timeTextView.setText(model.getTimestamp());
+            }
+
+            @NonNull
+            @Override
+            public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
+                return new NotificationViewHolder(view);
             }
         };
 
-        messageList.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String messageText = messageInput.getText().toString().trim();
-                if (!TextUtils.isEmpty(messageText)) {
-                    // Send the message
-                    sendMessage(messageText, currentUser.getUid());
-                    messageInput.setText("");
-                }
+        sendButton.setOnClickListener(v -> {
+            String messageText = messageInput.getText().toString().trim();
+            if (!TextUtils.isEmpty(messageText)) {
+                // Send the message
+                sendMessage(messageText, currentUser.getUid());
+                messageInput.setText("");
             }
         });
+    }
+
+    public static class NotificationViewHolder extends RecyclerView.ViewHolder {
+        TextView messageTextView;
+        TextView timeTextView;
+
+        public NotificationViewHolder(@NonNull View itemView) {
+            super(itemView);
+            messageTextView = itemView.findViewById(R.id.messageText);
+            timeTextView = itemView.findViewById(R.id.timeText);
+        }
     }
     private void sendMessage(String messageText, String senderId) {
         DatabaseReference newMessageRef = notificationRef.push();

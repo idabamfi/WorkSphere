@@ -18,4 +18,10 @@
     <string name="clock_in">Clock In</string>
     <string name="type_your_message">Type your message...</string>
     <string name="send_message" />
+    <string name="sales">sales</string>
+    <string name="save">Save</string>
+    <string name="sales_achieved">Sales Achieved</string>
+    <string name="todo">TODO</string>
+    <string name="notificationss">Notifications</string>
+    <string name="next"><![CDATA[Next>>]]></string>
 </resources>

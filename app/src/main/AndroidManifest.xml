@@ -44,6 +44,7 @@
         <activity android:name=".PayActivity"/>
         <activity android:name=".SalesTargetsActivity"/>
         <activity android:name=".ShiftsActivity"/>
+        <activity android:name=".SalesAdminActivity"/>
     </application>
 
 </manifest>

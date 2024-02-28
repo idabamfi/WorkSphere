@@ -29,7 +29,7 @@ public class PayActivity extends AppCompatActivity {
         textViewAccumulatedPay = findViewById(R.id.textViewAccumulatedPay);
 
         // Get employee ID from Intent or wherever you store it
-        employeeId = "ochv3pOEJiabJjvYySg059ujoWk1"; // Example employee ID
+        employeeId = "o7AtMzLaprRALRtdtccVvELFn6z2";
 
         // Initialize Firebase Database reference
         databaseReference = FirebaseDatabase.getInstance().getReference().child("employees").child(employeeId);

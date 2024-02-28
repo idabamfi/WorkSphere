@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import io.reactivex.rxjava3.annotations.NonNull;
 
 public class SalesTargetsActivity extends AppCompatActivity {
-    private TextView shift1SalesText, shift2SalesText, shift3SalesText;
+    private TextView shift1SalesText, shift2SalesText, shift3SalesText, shift1DateText, shift2DateText, shift3DateText   ;
     private EditText shift1AchievedInput, shift2AchievedInput, shift3AchievedInput;
     private Button saveButton;
     private DatabaseReference employeeRef;
@@ -41,6 +41,9 @@ public class SalesTargetsActivity extends AppCompatActivity {
         shift1SalesText = findViewById(R.id.shift1SalesText);
         shift2SalesText = findViewById(R.id.shift2SalesText);
         shift3SalesText = findViewById(R.id.shift3SalesText);
+        shift1DateText = findViewById(R.id.shift1DateText);
+        shift2DateText = findViewById(R.id.shift2DateText);
+        shift3DateText = findViewById(R.id.shift3DateText);
         shift1AchievedInput = findViewById(R.id.shift1Achieved);
         shift2AchievedInput = findViewById(R.id.shift2Achieved);
         shift3AchievedInput = findViewById(R.id.shift3Achieved);
@@ -67,17 +70,22 @@ public class SalesTargetsActivity extends AppCompatActivity {
                     String shiftId = shiftSnapshot.getKey();
                     if (shiftId != null) {
                         Long salesTarget = shiftSnapshot.child("salesTarget").child("salesTarget").getValue(Long.class);
-                        if (salesTarget != null) {
-                            String salesTargetText = "Shift " + shiftId.substring(5) + " Sales Target: $" + salesTarget;
+                        String shiftDate = shiftSnapshot.child("shiftDate").getValue(String.class);
+                        if (shiftDate != null && salesTarget != null) {
+                            String salesTargetText = "Shift " + shiftId.substring(5) + ", Sales Target: $" + salesTarget;
+                            String shiftDateText =  " - Date: " + shiftDate;
                             switch (shiftId) {
                                 case "shift1":
                                     shift1SalesText.setText(salesTargetText);
+                                    shift1DateText.setText(shiftDateText);
                                     break;
                                 case "shift2":
                                     shift2SalesText.setText(salesTargetText);
+                                    shift2DateText.setText(shiftDateText);
                                     break;
                                 case "shift3":
                                     shift3SalesText.setText(salesTargetText);
+                                    shift1DateText.setText(shiftDateText);
                                     break;
                                 // Add cases for more shifts here
                             }

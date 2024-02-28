@@ -24,10 +24,10 @@
                 android:cropToPadding="true"
                 android:src="@drawable/ic_emps_img" />
 
-            <include layout="@layout/card_clockin"/>
+            <include layout="@layout/card_clockin" />
             <include layout="@layout/card_shifts"/>
-            <include layout="@layout/card_targets"/>
             <include layout="@layout/card_pay"/>
+            <include layout="@layout/card_targets"/>
             <include layout="@layout/card_notification"/>
 
         </LinearLayout>
