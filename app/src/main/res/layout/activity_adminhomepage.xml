@@ -28,6 +28,7 @@
             <include layout="@layout/card_admin_shifts"/>
             <include layout="@layout/card_admin_clockin"/>
             <include layout="@layout/card_admin_employee"/>
+            <include layout="@layout/card_notification"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

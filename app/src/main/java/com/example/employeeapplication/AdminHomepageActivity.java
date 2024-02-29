@@ -14,7 +14,7 @@ public class AdminHomepageActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_adminhomepage);
 
         // Locate the buttons by their IDs
-        for (int i : new int[]{R.id.buttonSetSales, R.id.buttonSetShifts, R.id.buttonViewClockIn, R.id.buttonAddEmployee}) {
+        for (int i : new int[]{R.id.buttonSetSales, R.id.buttonSetShifts, R.id.buttonViewClockIn, R.id.buttonAddEmployee, R.id.buttonNotification}) {
             findViewById(i).setOnClickListener(this);
         }
     }
@@ -36,6 +36,9 @@ public class AdminHomepageActivity extends AppCompatActivity implements View.OnC
         } else if (view.getId() == R.id.buttonAddEmployee) {
             //change activity
            intent = new Intent(this, PayActivity.class);
+            startActivity(intent);
+        }  else if (view.getId() == R.id.buttonNotification) {
+            intent = new Intent(this, NotificationActivity.class);
             startActivity(intent);
         }
     }

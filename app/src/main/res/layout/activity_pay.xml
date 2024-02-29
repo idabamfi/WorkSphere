@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Background Image and Title -->
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -17,7 +16,7 @@
             android:alpha="0.15"
             android:contentDescription="@string/pay"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_emp_img" />
+            android:src="@drawable/ic_people" />
 
         <!-- Title -->
         <TextView
@@ -41,21 +40,12 @@
 
         <!-- Pay Date -->
         <LinearLayout
-            android:layout_width="311dp"
-            android:layout_height="84dp"
+            android:layout_width="310dp"
+            android:layout_height="94dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/bubble"
             android:orientation="horizontal"
             android:padding="10dp">
-
-            <TextView
-                android:id="@+id/textViewPayDateLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gotham"
-                android:text="Pay Date:"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewPayDate"
@@ -77,15 +67,6 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/textViewHourlyPayLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gotham"
-                android:text="Hourly Pay:"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
-            <TextView
                 android:id="@+id/textViewHourlyPay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,15 +84,6 @@
             android:background="@drawable/bubble"
             android:orientation="horizontal"
             android:padding="10dp">
-
-            <TextView
-                android:id="@+id/textViewAccumulatedPayLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/gotham"
-                android:text="Accumulated Pay:"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewAccumulatedPay"

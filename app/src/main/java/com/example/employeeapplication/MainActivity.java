@@ -1,4 +1,5 @@
 package com.example.employeeapplication;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,26 +30,32 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("employees").child(userUid);
+        // Check if the current user is null before accessing their UID
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userUid = currentUser.getUid();
+            DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("employees").child(userUid);
 
-        employeeRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    // Employee data exists, retrieve it
-                    Employee employee = dataSnapshot.getValue(Employee.class);
-                    // Do something with the employee data
-                } else {
-                    // Employee data not found
+            employeeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        // Employee data exists, retrieve it
+                        Employee employee = dataSnapshot.getValue(Employee.class);
+                        // Do something with the employee data
+                    } else {
+                        // Employee data not found
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle errors
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Handle errors
+                }
+            });
+        } else {
+            Toast.makeText(MainActivity.this, "Please Login", Toast.LENGTH_SHORT).show();
+        }
     }
     public void logIn(View view){
         String email = editTextEmail.getText().toString().trim();

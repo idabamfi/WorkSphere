@@ -72,7 +72,7 @@ public class SalesTargetsActivity extends AppCompatActivity {
                         Long salesTarget = shiftSnapshot.child("salesTarget").child("salesTarget").getValue(Long.class);
                         String shiftDate = shiftSnapshot.child("shiftDate").getValue(String.class);
                         if (shiftDate != null && salesTarget != null) {
-                            String salesTargetText = "Shift " + shiftId.substring(5) + ", Sales Target: $" + salesTarget;
+                            String salesTargetText = "Shift " + shiftId.substring(5) + ", Sales Target: £" + salesTarget;
                             String shiftDateText =  " - Date: " + shiftDate;
                             switch (shiftId) {
                                 case "shift1":
