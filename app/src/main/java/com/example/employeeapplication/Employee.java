@@ -7,6 +7,8 @@ public class Employee {
     private String employeeName;
     private String employeeNumber;
     private int holidayDays;
+
+    private int hourlyPay;
     private Pay pay;
     private Map<String, Shift> shifts;
     private List<NotificationMessage> notifications;
@@ -16,13 +18,14 @@ public class Employee {
     }
 
     // Constructor with parameters
-    public Employee(String employeeId, String employeeName, String employeeNumber, int holidayDays, Pay pay, Map<String, Shift> shifts, List<NotificationMessage> notifications) {
+    public Employee(String employeeId, String employeeName, String employeeNumber, int hourlyPay, int holidayDays, Pay pay, Map<String, Shift> shifts, List<NotificationMessage> notifications) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeNumber = employeeNumber;
         this.holidayDays = holidayDays;
         this.pay = pay;
         this.shifts = shifts;
+        this.hourlyPay = hourlyPay;
         this.notifications = notifications;
     }
 
@@ -83,4 +86,20 @@ public class Employee {
         this.notifications = notifications;
     }
 
+    // Getter methods
+    public String getName() {
+        return employeeName;
+    }
+
+    public String getNumber() {
+        return employeeNumber;
+    }
+
+    public double getHourlyPay() {
+        return hourlyPay;
+    }
+
+    public String getId() {
+        return employeeId;
+    }
 }

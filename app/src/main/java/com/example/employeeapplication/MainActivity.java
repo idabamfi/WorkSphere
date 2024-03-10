@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;
     private EditText editTextEmail, editTextPassword;
 
     @Override

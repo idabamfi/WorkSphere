@@ -27,15 +27,15 @@ public class AdminHomepageActivity extends AppCompatActivity implements View.OnC
             startActivity(intent);
             // change to admin shifts
         } else if (view.getId() == R.id.buttonSetShifts) {
-            intent = new Intent(this, ShiftsActivity.class);
+            intent = new Intent(this, AdminShiftsActivity.class);
             startActivity(intent);
 
         } else if (view.getId() == R.id.buttonViewClockIn) {
-            intent = new Intent(this, SalesAdminActivity.class);
+            intent = new Intent(this, AdminClockInTimesActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.buttonAddEmployee) {
             //change activity
-           intent = new Intent(this, PayActivity.class);
+           intent = new Intent(this, EmployeeInformationActivity.class);
             startActivity(intent);
         }  else if (view.getId() == R.id.buttonNotification) {
             intent = new Intent(this, NotificationActivity.class);

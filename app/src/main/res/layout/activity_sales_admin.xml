@@ -6,34 +6,43 @@
     android:padding="20dp">
 
     <TextView
-        android:layout_width="238dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
-        android:text="Enter Sales Target"
+        android:text="Update Sales Target"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp" />
 
     <ImageView
-        android:id="@+id/clockImageView"
-        android:layout_width="374dp"
-        android:layout_height="213dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="249dp"
         android:layout_marginBottom="16dp"
-        android:alpha="0.4"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_worker_img" />
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/editTextEmployeeName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Date (YYYY-MM-DD)"
+            android:hint="Employee Name"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextShiftDate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Shift Date (YYYY-MM-DD)"
             android:inputType="date"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,11 +60,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/updateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update Sales Target"
-        android:textColor="#FF000000"
+        android:textColor="@android:color/black"
         android:background="@color/colorPrimary"
         android:layout_marginTop="24dp"/>
 

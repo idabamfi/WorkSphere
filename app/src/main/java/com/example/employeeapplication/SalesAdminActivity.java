@@ -13,8 +13,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SalesAdminActivity extends AppCompatActivity {
 
-    private EditText editTextDate, editTextSalesTarget;
-    private Button addButton;
+    private EditText editTextEmployeeName, editTextShiftDate, editTextSalesTarget;
+    private Button updateButton;
     private DatabaseReference databaseReference;
 
     @Override
@@ -23,36 +23,38 @@ public class SalesAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sales_admin);
 
         // Initialize Firebase Database
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("sales_targets");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("employees");
 
         // Initialize UI elements
-        editTextDate = findViewById(R.id.editTextDate);
+        editTextEmployeeName = findViewById(R.id.editTextEmployeeName);
+        editTextShiftDate = findViewById(R.id.editTextShiftDate);
         editTextSalesTarget = findViewById(R.id.editTextSalesTarget);
-        addButton = findViewById(R.id.addButton);
+        updateButton = findViewById(R.id.updateButton);
 
-        addButton.setOnClickListener(new View.OnClickListener() {
+        updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addSalesTarget();
+                updateSalesTarget();
             }
         });
     }
 
-    private void addSalesTarget() {
-        String date = editTextDate.getText().toString().trim();
+    private void updateSalesTarget() {
+        String employeeName = editTextEmployeeName.getText().toString().trim();
+        String shiftDate = editTextShiftDate.getText().toString().trim();
         String salesTarget = editTextSalesTarget.getText().toString().trim();
 
-        // Check if both fields are not empty
-        if (date.isEmpty() || salesTarget.isEmpty()) {
-            Toast.makeText(this, "Please enter both date and sales target", Toast.LENGTH_SHORT).show();
+        // Check if any field is empty
+        if (employeeName.isEmpty() || shiftDate.isEmpty() || salesTarget.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Update database with new sales target
-        databaseReference.child(date).setValue(salesTarget)
+        databaseReference.child(employeeName).child("shifts").child(shiftDate).child("salesTarget").setValue(salesTarget)
                 .addOnSuccessListener(aVoid -> {
                     // Database updated successfully
-                    Toast.makeText(SalesAdminActivity.this, "Sales target updated for " + date, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SalesAdminActivity.this, "Sales target updated for " + employeeName + " on " + shiftDate, Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
                     // Error occurred while updating database
@@ -60,3 +62,5 @@ public class SalesAdminActivity extends AppCompatActivity {
                 });
     }
 }
+
+

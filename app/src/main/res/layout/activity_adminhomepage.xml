@@ -21,8 +21,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="253dp"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/image"
                 android:cropToPadding="true"
-                android:src="@drawable/ic_admin_img" />
+                android:src="@drawable/ic_admin_img"
+                tools:ignore="ImageContrastCheck" />
 
             <include layout="@layout/card_admin_sales"/>
             <include layout="@layout/card_admin_shifts"/>

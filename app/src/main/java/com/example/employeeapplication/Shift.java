@@ -5,27 +5,36 @@ public class Shift {
     private String shiftDate;
     private String startTime;
     private String endTime;
+
+    private String employeeId;
+    private String employeeName;
     private double totalHours;
     private String lunchBreak;
     private SalesTarget salesTarget;
     private String clockInStatus;
     private String clockInTime;
 
+    private String clockOutTime;
+
     // Constructor without parameters
-    public Shift() {
+    public Shift(String shiftId, String shiftDate, String startTime, String endTime, String lunchBreak) {
     }
 
     // Constructor with parameters
-    public Shift(String shiftId, String shiftDate, String startTime, String endTime, double totalHours, String lunchBreak, SalesTarget salesTarget, String clockInStatus, String clockInTime) {
+    public Shift( String employeeId, String employeeName,String shiftId, String shiftDate, String startTime, String endTime, double totalHours, String lunchBreak, SalesTarget salesTarget, String clockInStatus, String clockInTime) {
         this.shiftId = shiftId;
         this.shiftDate = shiftDate;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
         this.totalHours = totalHours;
         this.lunchBreak = lunchBreak;
         this.salesTarget = salesTarget;
         this.clockInStatus = clockInStatus;
         this.clockInTime = clockInTime;
+        this.clockOutTime = clockOutTime;
+
     }
 
     // Getters and setters
@@ -99,5 +108,22 @@ public class Shift {
 
     public void setClockInTime(String clockInTime) {
         this.clockInTime = clockInTime;
+    }
+
+
+    public String setEmployeeId(String userId) {
+        return userId;
+    }
+
+    public String setEmployeeName(String displayName) {
+        return displayName;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public String getClockOutTime() {
+        return clockOutTime;
     }
 }

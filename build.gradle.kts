@@ -1,6 +1,8 @@
 buildscript {
     dependencies {
         classpath("com.google.gms:google-services:4.4.0")
+        classpath("org.mockito:mockito-core:3.12.4")
+        classpath ("org.mockito:mockito-junit-jupiter:3.12.4")
     }
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
