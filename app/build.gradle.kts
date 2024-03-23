@@ -8,6 +8,13 @@ android {
     namespace = "com.example.employeeapplication"
     compileSdk = 33
 
+    packagingOptions {
+        // Exclude duplicate LICENSE.md files
+        exclude ("META-INF/LICENSE.md")
+        // Exclude duplicate LICENSE-notice.md files
+        exclude ("META-INF/LICENSE-notice.md")
+    }
+
     defaultConfig {
         applicationId = "com.example.employeeapplication"
         minSdk = 24

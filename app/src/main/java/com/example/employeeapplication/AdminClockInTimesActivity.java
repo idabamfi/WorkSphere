@@ -1,12 +1,12 @@
 package com.example.employeeapplication;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -16,50 +16,75 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class AdminClockInTimesActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private ShiftAdapter shiftAdapter;
-    private List<Shift> shiftsList;
+
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_clockintimes);
 
-        recyclerView = findViewById(R.id.recyclerViewShifts);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("employees");
 
-        shiftsList = new ArrayList<>();
-        shiftAdapter = new ShiftAdapter(shiftsList);
-        recyclerView.setAdapter(shiftAdapter);
+        fetchClockInTimes();
+    }
 
-        // Get the current user
+    private void fetchClockInTimes() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
             String userId = currentUser.getUid();
-            DatabaseReference shiftsReference = FirebaseDatabase.getInstance().getReference()
-                    .child("employees").child(userId).child("shifts");
 
-            shiftsReference.addValueEventListener(new ValueEventListener() {
+            databaseReference.child(userId).child("shifts").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    shiftsList.clear();
+                    LinearLayout layout = findViewById(R.id.layoutClockInTimes);
+
                     for (DataSnapshot shiftSnapshot : dataSnapshot.getChildren()) {
                         Shift shift = shiftSnapshot.getValue(Shift.class);
-                        shift.setEmployeeId(userId); // Set employee UID
-                        shift.setEmployeeName(currentUser.getDisplayName()); // Set employee name
-                        shiftsList.add(shift);
+                        if (shift != null) {
+                            String shiftDate = shift.getShiftDate();
+                            String shiftType = shift.getShiftType();
+                            String startTime = shift.getStartTime();
+                            String endTime = shift.getEndTime();
+                            String clockInTime = shift.getClockInTime();
+
+                            // Create a TextView to display the shift details
+                            TextView textViewShiftDetails = new TextView(AdminClockInTimesActivity.this);
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            );
+                            params.setMargins(0, 0, 0, 20);
+                            textViewShiftDetails.setLayoutParams(params);
+                            textViewShiftDetails.setText(String.format("Date: %s\nType: %s\nStart Time: %s\nEnd Time: %s\n", shiftDate, shiftType, startTime, endTime));
+
+                            // Check clock in time and set its style accordingly
+                            TextView textViewClockInTime = new TextView(AdminClockInTimesActivity.this);
+                            textViewClockInTime.setLayoutParams(params);
+                            textViewClockInTime.setText("Clock In Time: ");
+                            if (clockInTime != null) {
+                                if (clockInTime.compareTo(startTime) < 0) {
+                                    textViewClockInTime.append(clockInTime); // Clock in before start time
+                                } else {
+                                    textViewClockInTime.append("Late");
+                                    textViewClockInTime.setTextColor(Color.RED);
+                                    textViewClockInTime.setTypeface(null, android.graphics.Typeface.BOLD);
+                                }
+                            } else {
+                                textViewClockInTime.append("Not available");
+                            }
+
+                            // Add TextViews to the layout
+                            layout.addView(textViewShiftDetails);
+                            layout.addView(textViewClockInTime);
+                        }
                     }
-                    shiftAdapter.notifyDataSetChanged();
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(AdminClockInTimesActivity.this, "Failed to retrieve shifts: " +
-                            databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    // Handle database error
                 }
             });
         }

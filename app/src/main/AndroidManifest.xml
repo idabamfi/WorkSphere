@@ -45,6 +45,10 @@
         <activity android:name=".SalesTargetsActivity"/>
         <activity android:name=".ShiftsActivity"/>
         <activity android:name=".SalesAdminActivity"/>
+        <activity android:name=".AdminClockInTimesActivity"/>
+        <activity android:name=".AdminShiftsActivity"/>
+        <activity android:name=".EmployeeInformationActivity"/>
+        <activity android:name=".EmployeeAdapter"/>
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ public class Shift {
     private String shiftDate;
     private String startTime;
     private String endTime;
+    private String shiftType; // New field for shift type
 
     private String employeeId;
     private String employeeName;
@@ -13,19 +14,30 @@ public class Shift {
     private SalesTarget salesTarget;
     private String clockInStatus;
     private String clockInTime;
-
     private String clockOutTime;
 
-    // Constructor without parameters
-    public Shift(String shiftId, String shiftDate, String startTime, String endTime, String lunchBreak) {
+    // Default constructor (no-argument constructor) required by Firebase
+    public Shift(String shiftId, String shiftDate, String shiftType, String lunchBreak) {
+        // Required empty constructor
     }
 
     // Constructor with parameters
-    public Shift( String employeeId, String employeeName,String shiftId, String shiftDate, String startTime, String endTime, double totalHours, String lunchBreak, SalesTarget salesTarget, String clockInStatus, String clockInTime) {
+    public Shift(String shiftId, String shiftDate, String startTime, String endTime, String shiftType, String lunchBreak) {
         this.shiftId = shiftId;
         this.shiftDate = shiftDate;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.shiftType = shiftType;
+        this.lunchBreak = lunchBreak;
+    }
+
+    // Constructor with all fields
+    public Shift(String shiftId, String shiftDate, String startTime, String endTime, String shiftType, String employeeId, String employeeName, double totalHours, String lunchBreak, SalesTarget salesTarget, String clockInStatus, String clockInTime, String clockOutTime) {
+        this.shiftId = shiftId;
+        this.shiftDate = shiftDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.shiftType = shiftType;
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.totalHours = totalHours;
@@ -34,7 +46,6 @@ public class Shift {
         this.clockInStatus = clockInStatus;
         this.clockInTime = clockInTime;
         this.clockOutTime = clockOutTime;
-
     }
 
     // Getters and setters
@@ -68,6 +79,14 @@ public class Shift {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public String getShiftType() {
+        return shiftType;
+    }
+
+    public void setShiftType(String shiftType) {
+        this.shiftType = shiftType;
     }
 
     public double getTotalHours() {
@@ -110,20 +129,27 @@ public class Shift {
         this.clockInTime = clockInTime;
     }
 
-
-    public String setEmployeeId(String userId) {
-        return userId;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public String setEmployeeName(String displayName) {
-        return displayName;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getEmployeeName() {
         return employeeName;
     }
 
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
     public String getClockOutTime() {
         return clockOutTime;
+    }
+
+    public void setClockOutTime(String clockOutTime) {
+        this.clockOutTime = clockOutTime;
     }
 }

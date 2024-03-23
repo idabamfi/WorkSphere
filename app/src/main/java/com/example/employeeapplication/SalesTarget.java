@@ -1,17 +1,14 @@
 package com.example.employeeapplication;
 
 public class SalesTarget {
-
     private double salesTarget;
-
     private double salesAchieved;
 
-    // Constructor without parameters
     public SalesTarget() {
+        // Required no-argument constructor
     }
 
-    // Constructor with parameters
-    public SalesTarget(String dateGiven, double salesDifference, double salesTarget) {
+    public SalesTarget(double salesTarget, double salesAchieved) {
         this.salesTarget = salesTarget;
         this.salesAchieved = salesAchieved;
     }
@@ -24,12 +21,11 @@ public class SalesTarget {
         this.salesTarget = salesTarget;
     }
 
-    public double getSalesAchieved(double salesAchieved) {
+    public double getSalesAchieved() {
         return salesAchieved;
     }
 
     public void setSalesAchieved(double salesAchieved) {
         this.salesAchieved = salesAchieved;
     }
-
 }

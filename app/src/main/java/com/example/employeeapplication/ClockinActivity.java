@@ -49,8 +49,6 @@ public class ClockinActivity extends AppCompatActivity {
         // Initialize clockOutButton after setContentView
         clockOutButton = findViewById(R.id.clockOutButton);
 
-        // Initially hide the clock out button
-        clockOutButton.setVisibility(View.GONE);
         clockOutButton.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {

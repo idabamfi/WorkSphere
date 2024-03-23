@@ -18,9 +18,12 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +32,7 @@ import java.util.TimeZone;
 
 public class NotificationActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter<NotificationMessage, NotificationViewHolder> adapter;
-    private DatabaseReference notificationRef;
+    private DatabaseReference notificationRef, employeeRef, managerRef;;
     private FirebaseUser currentUser;
 
     @Override
@@ -41,6 +44,10 @@ public class NotificationActivity extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         notificationRef = FirebaseDatabase.getInstance().getReference().child("notifications");
+
+        // Initialize DatabaseReference for employee and manager details
+        employeeRef = FirebaseDatabase.getInstance().getReference().child("employees");
+        managerRef = FirebaseDatabase.getInstance().getReference().child("management");
 
         ImageButton sendButton = findViewById(R.id.sendButton);
         final EditText messageInput = findViewById(R.id.messageInput);
@@ -61,6 +68,13 @@ public class NotificationActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull NotificationViewHolder holder, int position, @NonNull NotificationMessage model) {
                 holder.messageTextView.setText(model.getMessage());
                 holder.timeTextView.setText(model.getTimestamp());
+
+                // Set the sender name (employee name or manager name) based on the senderId
+                if (model.getSenderId().equals(currentUser.getUid())) {
+                    // Current user sent the message, display "Me" as the sender
+                    holder.senderTextView.setText("Me");
+                }
+
             }
 
             @NonNull
@@ -86,11 +100,13 @@ public class NotificationActivity extends AppCompatActivity {
     public static class NotificationViewHolder extends RecyclerView.ViewHolder {
         TextView messageTextView;
         TextView timeTextView;
+        TextView senderTextView;
 
         public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
             messageTextView = itemView.findViewById(R.id.messageText);
             timeTextView = itemView.findViewById(R.id.timeText);
+            senderTextView = itemView.findViewById(R.id.senderText);
         }
     }
     private void sendMessage(String messageText, String senderId) {
@@ -98,9 +114,76 @@ public class NotificationActivity extends AppCompatActivity {
         String messageId = newMessageRef.getKey();
         if (messageId != null) {
             String timestamp = getCurrentTime(); // Get current timestamp
-            NotificationMessage message = new NotificationMessage(messageId, timestamp, messageText, senderId);
-            newMessageRef.setValue(message);
+
+            // Fetch employee/manager details based on senderId
+            DatabaseReference senderRef;
+            if (senderId.startsWith("employee")) {
+                senderRef = employeeRef.child(senderId);
+            } else if (senderId.startsWith("manager")) {
+                senderRef = managerRef.child(senderId);
+            } else {
+                // Handle unexpected sender ID
+                return;
+            }
+            // Read employee/manager details and send the message
+            senderRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String senderName = dataSnapshot.child("employeeName").getValue(String.class);
+                        if (senderName == null) {
+                            senderName = dataSnapshot.child("managerName").getValue(String.class);
+                        }
+                        if (senderName != null) {
+                            // Message senderName along with the messageText
+                            String updatedMessageText = senderName + ": " + messageText;
+
+                            // Create and send the message
+                            NotificationMessage message = new NotificationMessage(messageId, timestamp, updatedMessageText, senderId);
+                            newMessageRef.setValue(message);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle error
+                }
+            });
         }
+
+    }
+    private String getSenderNameFromId(String senderId, TextView senderTextView) {
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users").child(senderId);
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String senderName = dataSnapshot.child("employeeName").getValue(String.class);
+                    if (senderName != null) {
+                        senderTextView.setText(senderName);
+                    } else if (dataSnapshot.hasChild("managerName")) {
+                        // Manager name exists
+                        senderName = dataSnapshot.child("managerName").getValue(String.class);
+                    } if (senderName != null) {
+                        senderTextView.setText(senderName);
+                    } else {
+                        senderTextView.setText("Unknown");
+                    }
+                } else {
+                    senderTextView.setText("Unknown");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors
+            }
+        });
+
+        // Return a placeholder name while waiting for the database query to complete
+        return "Unknown";
     }
 
     private String getCurrentTime() {

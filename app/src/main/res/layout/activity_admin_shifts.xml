@@ -6,12 +6,11 @@
     tools:context=".AdminShiftsActivity">
 
     <TextView
-        android:layout_width="238dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Update Shifts"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Update Shifts"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp" />
 
@@ -21,49 +20,42 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="16dp"
-        android:alpha="0.4"
-        android:src="@drawable/ic_worker_img" />
+        android:src="@drawable/ic_worker_img"
+        android:alpha="0.4" />
 
-    <EditText
-        android:id="@+id/editTextEmployeeName"
+    <Spinner
+        android:id="@+id/spinnerEmployeeName"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
         android:hint="Employee Name"
-        android:inputType="text" />
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/spinnerShiftType"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/spinnerEmployeeName"
+        android:layout_margin="16dp"
+        android:hint="Shift Type"
+        android:spinnerMode="dropdown" />
 
     <EditText
         android:id="@+id/editTextShiftDate"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@id/editTextEmployeeName"
+        android:layout_below="@id/spinnerShiftType"
         android:layout_margin="16dp"
         android:hint="Shift Date"
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/editTextStartTime"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_below="@id/editTextShiftDate"
-        android:layout_margin="16dp"
-        android:hint="Start Time"
-        android:inputType="time" />
-
-    <EditText
-        android:id="@+id/editTextEndTime"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_below="@id/editTextStartTime"
-        android:layout_margin="16dp"
-        android:hint="End Time"
-        android:inputType="time" />
-
-    <EditText
         android:id="@+id/editTextLunchBreak"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_below="@id/editTextEndTime"
+        android:layout_below="@id/editTextShiftDate"
         android:layout_margin="16dp"
         android:hint="Lunch Break"
         android:inputType="time" />
@@ -77,7 +69,6 @@
         android:layout_marginTop="32dp"
         android:text="Save Shift"
         android:textColor="#FF000000"
-        android:background="@color/colorPrimary"
-       />
+        android:background="@color/colorPrimary" />
 
 </RelativeLayout>

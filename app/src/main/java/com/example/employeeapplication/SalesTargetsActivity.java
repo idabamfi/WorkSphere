@@ -20,7 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 import io.reactivex.rxjava3.annotations.NonNull;
 
 public class SalesTargetsActivity extends AppCompatActivity {
-    private TextView shift1SalesText, shift2SalesText, shift3SalesText, shift1DateText, shift2DateText, shift3DateText   ;
+    private TextView shift1DateText, shift2DateText, shift3DateText;
+    private TextView shift1SalesText, shift2SalesText, shift3SalesText ;
     private EditText shift1AchievedInput, shift2AchievedInput, shift3AchievedInput;
     private Button saveButton;
     private DatabaseReference employeeRef;
@@ -85,7 +86,7 @@ public class SalesTargetsActivity extends AppCompatActivity {
                                     break;
                                 case "shift3":
                                     shift3SalesText.setText(salesTargetText);
-                                    shift1DateText.setText(shiftDateText);
+                                    shift3DateText.setText(shiftDateText);
                                     break;
                                 // Add cases for more shifts here
                             }
