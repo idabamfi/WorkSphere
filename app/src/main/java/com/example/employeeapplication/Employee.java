@@ -8,7 +8,7 @@ public class Employee {
     private String employeeNumber;
     private int holidayDays;
 
-    private int hourlyPay;
+    private double hourlyPay;
     private Pay pay;
     private Map<String, Shift> shifts;
     private List<NotificationMessage> notifications;
@@ -18,7 +18,7 @@ public class Employee {
     }
 
     // Constructor with parameters
-    public Employee(String employeeId, String employeeName, String employeeNumber, int hourlyPay, int holidayDays, Pay pay, Map<String, Shift> shifts, List<NotificationMessage> notifications) {
+    public Employee(String employeeId, String employeeName, String employeeNumber, double hourlyPay, int holidayDays, Pay pay, Map<String, Shift> shifts, List<NotificationMessage> notifications) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.employeeNumber = employeeNumber;

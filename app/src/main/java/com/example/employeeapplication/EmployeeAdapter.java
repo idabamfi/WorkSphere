@@ -30,9 +30,9 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Employee employee = employees.get(position);
         holder.textViewEmployeeName.setText("Name: " + employee.getName());
-        holder.textViewEmployeeNumber.setText("Employee Number: " + employee.getNumber());
+        holder.textViewEmployeeNumber.setText("Employee Phone Number: " + employee.getNumber());
         holder.textViewHolidayDays.setText("Holiday Days: " + employee.getHolidayDays());
-        holder.textViewHourlyPay.setText("Hourly Pay: " + employee.getHourlyPay());
+        holder.textViewHourlyPay.setText("Hourly Pay: 13.00" );
         holder.textViewEmployeeId.setText("Employee ID: " + employee.getId());
     }
 

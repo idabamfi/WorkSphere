@@ -10,11 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
@@ -36,23 +33,6 @@ public class MainActivity extends AppCompatActivity {
             String userUid = currentUser.getUid();
             DatabaseReference employeeRef = FirebaseDatabase.getInstance().getReference("employees").child(userUid);
 
-            employeeRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        // Employee data exists, retrieve it
-                        Employee employee = dataSnapshot.getValue(Employee.class);
-                        // Do something with the employee data
-                    } else {
-                        // Employee data not found
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    // Handle errors
-                }
-            });
         } else {
             Toast.makeText(MainActivity.this, "Please Login", Toast.LENGTH_SHORT).show();
         }

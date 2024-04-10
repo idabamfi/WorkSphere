@@ -49,7 +49,7 @@ public class PayActivity extends AppCompatActivity {
                 // Display pay data
                 textViewPayDate.setText("Pay Date: " + payDate);
                 textViewHourlyPay.setText("Hourly Pay: £" + hourlyPay);
-                textViewAccumulatedPay.setText("Accumulated Pay: £]" + accumulatedPay);
+                textViewAccumulatedPay.setText("Accumulated Pay: £" + accumulatedPay);
 
                 // Update accumulated pay in the database
                 dataSnapshot.child("pay").child("accumulatedPay").getRef().setValue(accumulatedPay);

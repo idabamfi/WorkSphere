@@ -95,7 +95,8 @@ public class AdminShiftsActivity extends AppCompatActivity {
 
         String shiftId = employeeRef.child("shifts").push().getKey();
 
-        Shift shift = new Shift(shiftId, shiftDate, shiftType, lunchBreak);
+        Shift shift;
+        shift = new Shift(shiftId, shiftDate, shiftType, lunchBreak);
 
         employeeRef.child("shifts").child(shiftId).setValue(shift)
                 .addOnSuccessListener(aVoid -> {

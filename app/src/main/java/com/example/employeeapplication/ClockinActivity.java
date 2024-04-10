@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -138,7 +137,7 @@ public class ClockinActivity extends AppCompatActivity {
         employeeRef.child("clockInTime").setValue(currentTime);
 
         // Show the clock out button after clocking in
-        clockOutButton.setVisibility(View.VISIBLE);
+      //  clockOutButton.setVisibility(View.VISIBLE);
     }
 
     private void processClockOut() {

@@ -5,50 +5,33 @@ public class Shift {
     private String shiftDate;
     private String startTime;
     private String endTime;
-    private String shiftType; // New field for shift type
-
+    private String shiftType;
     private String employeeId;
     private String employeeName;
     private double totalHours;
+    private double salesAchieved;
+    private double salesTarget;
     private String lunchBreak;
-    private SalesTarget salesTarget;
     private String clockInStatus;
     private String clockInTime;
     private String clockOutTime;
 
-    // Default constructor (no-argument constructor) required by Firebase
+    // No-argument constructor required by Firebase
+    public Shift() {
+        // Default constructor
+    }
     public Shift(String shiftId, String shiftDate, String shiftType, String lunchBreak) {
-        // Required empty constructor
-    }
-
-    // Constructor with parameters
-    public Shift(String shiftId, String shiftDate, String startTime, String endTime, String shiftType, String lunchBreak) {
+        // Default constructor required for Firebase
         this.shiftId = shiftId;
         this.shiftDate = shiftDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.shiftType = shiftType;
         this.lunchBreak = lunchBreak;
-    }
-
-    // Constructor with all fields
-    public Shift(String shiftId, String shiftDate, String startTime, String endTime, String shiftType, String employeeId, String employeeName, double totalHours, String lunchBreak, SalesTarget salesTarget, String clockInStatus, String clockInTime, String clockOutTime) {
-        this.shiftId = shiftId;
-        this.shiftDate = shiftDate;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.shiftType = shiftType;
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
-        this.totalHours = totalHours;
-        this.lunchBreak = lunchBreak;
-        this.salesTarget = salesTarget;
-        this.clockInStatus = clockInStatus;
-        this.clockInTime = clockInTime;
-        this.clockOutTime = clockOutTime;
     }
 
     // Getters and setters
+
     public String getShiftId() {
         return shiftId;
     }
@@ -89,6 +72,22 @@ public class Shift {
         this.shiftType = shiftType;
     }
 
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
     public double getTotalHours() {
         return totalHours;
     }
@@ -105,14 +104,6 @@ public class Shift {
         this.lunchBreak = lunchBreak;
     }
 
-    public SalesTarget getSalesTarget() {
-        return salesTarget;
-    }
-
-    public void setSalesTarget(SalesTarget salesTarget) {
-        this.salesTarget = salesTarget;
-    }
-
     public String getClockInStatus() {
         return clockInStatus;
     }
@@ -120,29 +111,27 @@ public class Shift {
     public void setClockInStatus(String clockInStatus) {
         this.clockInStatus = clockInStatus;
     }
+    public double getSalesAchieved() {
+        return salesAchieved;
+    }
 
+    public void setSalesAchieved(double salesAchieved) {
+        this.salesAchieved = salesAchieved;
+    }
+
+    public double getSalesTarget() {
+        return salesTarget;
+    }
+
+    public void setSalesTarget(double salesTarget) {
+        this.salesTarget = salesTarget;
+    }
     public String getClockInTime() {
         return clockInTime;
     }
 
     public void setClockInTime(String clockInTime) {
         this.clockInTime = clockInTime;
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getEmployeeName() {
-        return employeeName;
-    }
-
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
     }
 
     public String getClockOutTime() {

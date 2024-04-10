@@ -39,32 +39,33 @@ public class AdminClockInTimesActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     LinearLayout layout = findViewById(R.id.layoutClockInTimes);
+                    int id = 0;
 
                     for (DataSnapshot shiftSnapshot : dataSnapshot.getChildren()) {
                         Shift shift = shiftSnapshot.getValue(Shift.class);
                         if (shift != null) {
                             String shiftDate = shift.getShiftDate();
                             String shiftType = shift.getShiftType();
-                            String startTime = shift.getStartTime();
-                            String endTime = shift.getEndTime();
                             String clockInTime = shift.getClockInTime();
 
-                            // Create a TextView to display the shift details
+                            // TextView to display the shift details
                             TextView textViewShiftDetails = new TextView(AdminClockInTimesActivity.this);
+                            textViewShiftDetails.setId(id++);
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.WRAP_CONTENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT
                             );
                             params.setMargins(0, 0, 0, 20);
                             textViewShiftDetails.setLayoutParams(params);
-                            textViewShiftDetails.setText(String.format("Date: %s\nType: %s\nStart Time: %s\nEnd Time: %s\n", shiftDate, shiftType, startTime, endTime));
+                            textViewShiftDetails.setText(String.format("Date: %s\nType: %s\n", shiftDate, shiftType));
 
                             // Check clock in time and set its style accordingly
                             TextView textViewClockInTime = new TextView(AdminClockInTimesActivity.this);
+                            textViewClockInTime.setId(id++);
                             textViewClockInTime.setLayoutParams(params);
                             textViewClockInTime.setText("Clock In Time: ");
                             if (clockInTime != null) {
-                                if (clockInTime.compareTo(startTime) < 0) {
+                                if (clockInTime.compareTo(shiftType) < 0) {
                                     textViewClockInTime.append(clockInTime); // Clock in before start time
                                 } else {
                                     textViewClockInTime.append("Late");

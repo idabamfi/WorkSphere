@@ -42,8 +42,7 @@
             android:id="@+id/editTextShiftDate"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Shift Date (YYYY-MM-DD)"
-            android:inputType="date"/>
+            android:hint="Shift Date (YYYY-MM-DD)" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

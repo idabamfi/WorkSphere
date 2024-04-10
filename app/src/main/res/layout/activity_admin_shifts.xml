@@ -48,8 +48,8 @@
         android:layout_height="48dp"
         android:layout_below="@id/spinnerShiftType"
         android:layout_margin="16dp"
-        android:hint="Shift Date"
-        android:inputType="date" />
+        android:hint="Shift Date (YYYY-MM-DD)"
+        />
 
     <EditText
         android:id="@+id/editTextLunchBreak"

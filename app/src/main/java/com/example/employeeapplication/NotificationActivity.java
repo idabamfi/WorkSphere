@@ -34,6 +34,8 @@ public class NotificationActivity extends AppCompatActivity {
     private FirebaseRecyclerAdapter<NotificationMessage, NotificationViewHolder> adapter;
     private DatabaseReference notificationRef, employeeRef, managerRef;;
     private FirebaseUser currentUser;
+    private RecyclerView recyclerView;
+    private String messageText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +112,12 @@ public class NotificationActivity extends AppCompatActivity {
         }
     }
     private void sendMessage(String messageText, String senderId) {
+        // Check if the message text is empty
+        if (TextUtils.isEmpty(messageText)) {
+            // Log an error or display a message to the user indicating that the message is empty
+            return;
+        }
+
         DatabaseReference newMessageRef = notificationRef.push();
         String messageId = newMessageRef.getKey();
         if (messageId != null) {
@@ -117,9 +125,9 @@ public class NotificationActivity extends AppCompatActivity {
 
             // Fetch employee/manager details based on senderId
             DatabaseReference senderRef;
-            if (senderId.startsWith("employee")) {
+            if (senderId.startsWith("o7At")) {
                 senderRef = employeeRef.child(senderId);
-            } else if (senderId.startsWith("manager")) {
+            } else if (senderId.startsWith("6lC")) {
                 senderRef = managerRef.child(senderId);
             } else {
                 // Handle unexpected sender ID
@@ -141,6 +149,9 @@ public class NotificationActivity extends AppCompatActivity {
                             // Create and send the message
                             NotificationMessage message = new NotificationMessage(messageId, timestamp, updatedMessageText, senderId);
                             newMessageRef.setValue(message);
+
+                            // Update UI with sender name
+                            updateUIWithSenderName(senderName, timestamp, messageText);
                         }
                     }
                 }
@@ -151,39 +162,16 @@ public class NotificationActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
-    private String getSenderNameFromId(String senderId, TextView senderTextView) {
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users").child(senderId);
-        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String senderName = dataSnapshot.child("employeeName").getValue(String.class);
-                    if (senderName != null) {
-                        senderTextView.setText(senderName);
-                    } else if (dataSnapshot.hasChild("managerName")) {
-                        // Manager name exists
-                        senderName = dataSnapshot.child("managerName").getValue(String.class);
-                    } if (senderName != null) {
-                        senderTextView.setText(senderName);
-                    } else {
-                        senderTextView.setText("Unknown");
-                    }
-                } else {
-                    senderTextView.setText("Unknown");
-                }
 
-            }
+    private void updateUIWithSenderName(String senderName, String timestamp, String messageText) {
+        String boldSenderName = "<b>" + senderName + "</b>"; // Wrap sender name in HTML bold tags
+        String formattedMessage = "<b>" + boldSenderName + ": </b>" + messageText;
+        NotificationMessage newMessage = new NotificationMessage("", timestamp, formattedMessage, "");
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle errors
-            }
-        });
 
-        // Return a placeholder name while waiting for the database query to complete
-        return "Unknown";
+        // Scroll to the top of the RecyclerView to show the new message
+        //recyclerView.scrollToPosition(0);
     }
 
     private String getCurrentTime() {
@@ -203,4 +191,5 @@ public class NotificationActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
 }
